@@ -2,26 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:title="Home"
         android:enabled="true"
         android:state_checked="true"
         android:icon="@drawable/home_selector" />
 
     <item
-        android:id="@+id/navigation_items"
+        android:id="@+id/itemsFragment"
         android:enabled="true"
         android:title="Items"
         android:icon="@drawable/shopping_selector" />
 
     <item
-        android:id="@+id/navigation_shops"
+        android:id="@+id/shopsFragment"
         android:enabled="true"
         android:title="Shops"
         android:icon="@drawable/store_selector" />
 
     <item
-        android:id="@+id/navigation_profile"
+        android:id="@+id/profileFragment"
         android:enabled="true"
         android:title="Profile"
         android:icon="@drawable/person_selector" />
