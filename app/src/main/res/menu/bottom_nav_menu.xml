@@ -3,26 +3,25 @@
 
     <item
         android:id="@+id/homeFragment"
-        android:title="Home"
+        android:title="@string/home"
         android:enabled="true"
-        android:state_checked="true"
         android:icon="@drawable/home_selector" />
 
     <item
         android:id="@+id/itemsFragment"
         android:enabled="true"
-        android:title="Items"
+        android:title="@string/items"
         android:icon="@drawable/shopping_selector" />
 
     <item
         android:id="@+id/shopsFragment"
         android:enabled="true"
-        android:title="Shops"
+        android:title="@string/shops"
         android:icon="@drawable/store_selector" />
 
     <item
         android:id="@+id/profileFragment"
         android:enabled="true"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/person_selector" />
 </menu>
