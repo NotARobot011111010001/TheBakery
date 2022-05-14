@@ -6,11 +6,23 @@
     android:background="@android:color/white"
     tools:context=".ItemsFragment">
 
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridView
+        android:id="@+id/items_grid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:numColumns="3"
+        android:layout_margin="8dp"
+
+        android:orientation="horizontal"
+        android:layout_weight="80"
+        android:gravity="center"
+        android:verticalSpacing="6dp"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        >
+
+    </GridView>
+
+
 
 </FrameLayout>

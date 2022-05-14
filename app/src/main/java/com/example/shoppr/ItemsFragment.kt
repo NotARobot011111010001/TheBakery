@@ -1,59 +1,81 @@
 package com.example.shoppr
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.GridView
+import android.widget.ImageView
+import android.widget.TextView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ItemsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+data class ShoppingItems (
+    val name: String,
+    val price : Double,
+    val Image : Int)
+
 class ItemsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    private val images: IntArray = intArrayOf(R.drawable.bread, R.drawable.carrots,R.drawable.sandwich,R.drawable.wine)
+    private val names = arrayOf("Bread", "Carrots", "Sandwich", "Wine")
+    private val prices = arrayOf(4.99, 2.45, 4.25, 10.99)
+
+    private var gridAdapter: GridAdapater? = null
+    private val shoppingItemsList : MutableList<ShoppingItems> = mutableListOf()
+    private lateinit var gridView : GridView
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+
         return inflater.inflate(R.layout.fragment_items, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ItemsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ItemsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        gridView = view.findViewById(R.id.items_grid)
+
+        for(index in names.indices){
+            val item = ShoppingItems(names[index], prices[index], images[index])
+            shoppingItemsList.add(item)
+        }
+        gridAdapter = GridAdapater(context,shoppingItemsList)
+        gridView.adapter = gridAdapter
+
+    }
+
+    class GridAdapater(private val context: Context?, private val gridItems: MutableList<ShoppingItems>) : BaseAdapter() {
+
+        private val filteredGridItems = gridItems
+
+        override fun getCount(): Int = filteredGridItems.size
+
+        override fun getItem(position: Int): Any {
+            return position
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+            var convertView = convertView
+            convertView = LayoutInflater.from(context).inflate(R.layout.grid_item,parent, false)
+            val image : ImageView = convertView.findViewById(R.id.item_image)
+            val name : TextView = convertView.findViewById(R.id.item_name)
+            val price : TextView = convertView.findViewById(R.id.item_price)
+
+            image.setImageResource(filteredGridItems[position].Image)
+            name.text = filteredGridItems[position].name
+            price.text = filteredGridItems[position].price.toString()
+
+            return convertView
+        }
+
     }
 }
