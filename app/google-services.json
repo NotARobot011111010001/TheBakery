@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "863212365272",
+    "project_id": "pmt-bakery-users",
+    "storage_bucket": "pmt-bakery-users.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863212365272:android:f42d9ea90c408e564afead",
+        "android_client_info": {
+          "package_name": "com.example.shoppr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863212365272-ddlmvje8j2u5h15499ppj7haaasmic22.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shoppr",
+            "certificate_hash": "2ce17d2ed22aee786194229700c5d915087b9a90"
+          }
+        },
+        {
+          "client_id": "863212365272-hcskp5unsiu2dudn9a50ig8brc5ogq1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOMdd-zVkeieMiOF0DmYMASHCM_AyWlH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863212365272-hcskp5unsiu2dudn9a50ig8brc5ogq1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
