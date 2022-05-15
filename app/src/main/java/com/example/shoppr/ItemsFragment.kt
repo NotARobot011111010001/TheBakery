@@ -7,11 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
-import android.widget.TextView
-
+import android.widget.*
+import java.util.*
 
 
 class ItemsFragment : Fragment() {
@@ -22,7 +19,7 @@ class ItemsFragment : Fragment() {
     private val weights = arrayOf("500g", "500g", "120g", "750ml")
     private val prices = arrayOf(4.99, 2.45, 4.25, 10.99)
 
-    private var gridAdapter: GridAdapater? = null
+    private var gridAdapter: GridAdapter? = null
     private val shoppingItemsList : MutableList<ShoppingItems> = mutableListOf()
     private lateinit var gridView : GridView
 
@@ -46,8 +43,23 @@ class ItemsFragment : Fragment() {
             }
         }
 
-        gridAdapter = GridAdapater(context,shoppingItemsList)
+        gridAdapter = GridAdapter(context,shoppingItemsList)
         gridView.adapter = gridAdapter
+
+        val searchView : androidx.appcompat.widget.SearchView = view.findViewById(R.id.items_search)
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                gridAdapter?.filter?.filter(newText)
+                return true
+            }
+
+        })
+
 
     }
 
@@ -64,9 +76,9 @@ class ItemsFragment : Fragment() {
         val Image : Int)
 
 
-    class GridAdapater(private val context: Context?, private val gridItems: MutableList<ShoppingItems>) : BaseAdapter() {
+    class GridAdapter(private val context: Context?, private val gridItems: MutableList<ShoppingItems>) : BaseAdapter(),Filterable {
 
-        private val filteredGridItems = gridItems
+        private var filteredGridItems = gridItems
 
         override fun getCount(): Int = filteredGridItems.size
 
@@ -92,6 +104,39 @@ class ItemsFragment : Fragment() {
             weight.text = filteredGridItems[position].weight
 
             return convertView
+        }
+
+        override fun getFilter(): Filter {
+            return object : Filter() {
+                override fun performFiltering(constraint: CharSequence?): FilterResults {
+                    val searchText = constraint.toString().lowercase()
+                    val filterResults = FilterResults()
+                    if(searchText.isEmpty()){
+                        filterResults.count = gridItems.size
+                        filterResults.values = gridItems
+                    }else{
+                        val resultsList = ArrayList<ShoppingItems>()
+                        for (gridItem in gridItems){
+                            if(gridItem.name.lowercase().contains(searchText) ||
+                                gridItem.price.toString().contains(searchText) ||
+                                gridItem.weight.lowercase().contains(searchText)){
+
+                                resultsList.add(gridItem)
+                            }
+                        }
+                        filterResults.count = resultsList.size
+                        filterResults.values = resultsList
+
+                    }
+                    return filterResults
+                }
+
+                override fun publishResults(charSequence: CharSequence?, filterResults: FilterResults) {
+                    filteredGridItems = filterResults.values as MutableList<ShoppingItems>
+                    notifyDataSetChanged()
+                }
+
+            }
         }
 
     }

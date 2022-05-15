@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
             isAppearanceLightStatusBars = true
         }
     }
-
     fun goHome(view: View){
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
+
 }

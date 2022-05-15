@@ -11,6 +11,38 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/items_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Welcome, John Doe"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/items_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/items_search"
+            app:queryHint="Search product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+
+            android:background="@drawable/search_corners"
+            app:iconifiedByDefault="false"
+            app:layout_constraintBottom_toTopOf="@+id/items_categories"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/items_username" />
+
+        <TextView
             android:id="@+id/items_categories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +82,9 @@
             android:layout_marginTop="8dp"
             android:numColumns="3"
             android:orientation="horizontal"
-            android:paddingBottom="100dp"
+
+            android:paddingBottom="250dp"
+            android:clipToPadding="false"
             android:verticalSpacing="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

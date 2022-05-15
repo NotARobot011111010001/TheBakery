@@ -1,5 +1,6 @@
 package com.example.shoppr
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,5 +19,7 @@ class WelcomeFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_welcome, container, false)
     }
+
+
 
 }

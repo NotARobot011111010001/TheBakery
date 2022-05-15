@@ -63,14 +63,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/welcome_text" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:layout_marginBottom="32dp"
-
                 android:backgroundTint="?colorAccent"
+                android:onClick="goHome"
                 android:paddingLeft="75dp"
                 android:paddingRight="75dp"
                 android:text="Next"
