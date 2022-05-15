@@ -13,11 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
-data class ShoppingItems (
-    val name: String,
-    val price : Double,
-    val weight: String,
-    val Image : Int)
 
 class ItemsFragment : Fragment() {
 
@@ -61,6 +56,12 @@ class ItemsFragment : Fragment() {
         super.onDestroyView()
         shoppingItemsList.clear()
     }
+
+    data class ShoppingItems (
+        val name: String,
+        val price : Double,
+        val weight: String,
+        val Image : Int)
 
 
     class GridAdapater(private val context: Context?, private val gridItems: MutableList<ShoppingItems>) : BaseAdapter() {

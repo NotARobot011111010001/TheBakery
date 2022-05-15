@@ -7,13 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class ShopsFragment : Fragment() {
+class WelcomeFragment : Fragment() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_shops, container, false)
+        return inflater.inflate(R.layout.fragment_welcome, container, false)
     }
+
 }
