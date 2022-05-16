@@ -19,9 +19,10 @@ class ShopManager {
         var names = arrayOf("Bread", "Carrots", "Sandwich", "Wine")
         var weights = arrayOf("500g", "500g", "120g", "750ml")
         var prices = arrayOf(4.99, 2.45, 4.25, 10.99)
+        var categories = arrayOf(null, Category.VEGETABLE, Category.SNACK, Category.DRINK)
         var shoppingItemsList : MutableList<ShoppingItem> = mutableListOf()
         for (index in names.indices) {
-            val item = ShoppingItem(names[index], weights[index], prices[index], Category.VEGETABLE, images[index])
+            val item = ShoppingItem(names[index], weights[index], prices[index], categories[index], images[index])
             shoppingItemsList.add(item)
         }
         shops.add(Shop("Super SuperMarket", "The country's best supermarket", Location("blank"), R.drawable.super_supermarket, shoppingItemsList))
@@ -60,5 +61,5 @@ data class ShoppingItem (
     val name: String,
     val weight: String,
     val price : Double,
-    val category: Category,
+    val category: Category?,
     val image : Int)

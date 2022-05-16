@@ -1,11 +1,13 @@
 package com.example.shoppr.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.shoppr.R
+import com.example.shoppr.logic.Category
 import com.example.shoppr.logic.ShoppingItem
 import java.util.ArrayList
 
@@ -13,6 +15,7 @@ class GridAdapter(private val context: Context?, private val gridItems: MutableL
     Filterable {
 
     private var filteredGridItems = gridItems
+    var currentCategory : Category? = null
 
     override fun getCount(): Int = filteredGridItems.size
 
@@ -44,12 +47,13 @@ class GridAdapter(private val context: Context?, private val gridItems: MutableL
 
     override fun getFilter(): Filter {
         return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
+            override fun performFiltering(constraint: CharSequence?): FilterResults? {
                 val searchText = constraint.toString().lowercase()
                 val filterResults = FilterResults()
                 if(searchText.isEmpty()){
-                    filterResults.count = gridItems.size
-                    filterResults.values = gridItems
+                    val filteredItems = gridItems.filter { it.second.category == currentCategory || currentCategory == null }
+                    filterResults.count = filteredItems.size
+                    filterResults.values = filteredItems
                 }else{
                     val resultsList = ArrayList<Pair<String, ShoppingItem>>()
                     for (gridItem in gridItems){
@@ -57,8 +61,9 @@ class GridAdapter(private val context: Context?, private val gridItems: MutableL
                             gridItem.second.price.toString().contains(searchText) ||
                             gridItem.second.weight.lowercase().contains(searchText) ||
                             gridItem.first.lowercase().contains(searchText)){
-
-                            resultsList.add(gridItem)
+                                if(currentCategory == null || gridItem.second.category == currentCategory){
+                                    resultsList.add(gridItem)
+                                }
                         }
                     }
                     filterResults.count = resultsList.size
