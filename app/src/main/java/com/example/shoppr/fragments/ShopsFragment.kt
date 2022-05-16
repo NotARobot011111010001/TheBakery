@@ -5,12 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.SearchView
+import android.widget.*
 import com.example.shoppr.R
 import com.example.shoppr.activities.HomeActivity
 import com.example.shoppr.adapters.ItemsGridAdapter
 import com.example.shoppr.adapters.ShopsListAdapter
+import com.example.shoppr.logic.FeaturedItem
 import com.example.shoppr.logic.ShopManager
 
 
@@ -31,6 +31,15 @@ class ShopsFragment : Fragment() {
         shopsAdapter = ShopsListAdapter(context, shopManager.shops)
         listView.adapter = shopsAdapter
 
+        val featuredItem : FeaturedItem = shopManager.getRandomFeatured()
+        val featuredImage : ImageView =  view.findViewById(R.id.advert_image)
+        val featuredName : TextView =  view.findViewById(R.id.advert_name)
+        val featuredSlogan : TextView =  view.findViewById(R.id.advert_slogan)
+
+        featuredImage.setImageResource(featuredItem.backgroundImage)
+        featuredName.text = featuredItem.name
+        featuredSlogan.text = featuredItem.slogan
+
 
         val searchView : androidx.appcompat.widget.SearchView = view.findViewById(R.id.shop_search)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
@@ -40,6 +49,7 @@ class ShopsFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
+
                 shopsAdapter.filter.filter(newText)
 
                 return true

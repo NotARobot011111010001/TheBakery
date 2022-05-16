@@ -23,12 +23,30 @@ class ShopManager {
             val item = ShoppingItem(names[index], weights[index], prices[index], categories[index], images[index])
             shoppingItemsList.add(item)
         }
-        shops.add(Shop("Super SuperMarket", "The country's best supermarket", Location("blank"), R.drawable.super_supermarket, shoppingItemsList))
-        shops.add(Shop("The Bakery", "Get a taste of the finest bread", Location("blank"), R.drawable.the_bakery, shoppingItemsList))
-        shops.add(Shop("FreshProduce", "Your local market for fresh product", Location("blank"), R.drawable.fresh_produce, shoppingItemsList))
+
+        var featuredCoke = FeaturedItem("Coca Cola","Only 99p per can", R.drawable.feautedcoke,0.99)
+        var featuredBread = FeaturedItem("Wholegrain bread","Now only £4.99", R.drawable.featuredbread,4.99)
+        shops.add(Shop("Super SuperMarket", "The country's best supermarket",
+            Location("blank"), R.drawable.super_supermarket, shoppingItemsList,
+            mutableListOf(featuredCoke)))
+
+        shops.add(Shop("The Bakery", "Get a taste of the finest bread",
+            Location("blank"), R.drawable.the_bakery, shoppingItemsList,
+            mutableListOf(featuredBread)))
+
+        shops.add(Shop("FreshProduce", "Your local market for fresh product",
+            Location("blank"), R.drawable.fresh_produce, shoppingItemsList,
+            mutableListOf()))
 
     }
 
+    fun getRandomFeatured(): FeaturedItem{
+        var featuredItems : MutableList<FeaturedItem> = mutableListOf()
+        for(shop in shops){
+            featuredItems.addAll(shop.featuredItems)
+        }
+        return featuredItems.random()
+    }
 
     fun getItemsAndShop(): MutableList<Pair<String, ShoppingItem>> {
         var listAll: MutableList<Pair<String, ShoppingItem>> = mutableListOf()
@@ -54,7 +72,8 @@ data class Shop (
     val slogan : String,
     val storeLocation: Location,
     val backgroundImage : Int,
-    val items: List<ShoppingItem>)
+    val items: List<ShoppingItem>,
+    val featuredItems: List<FeaturedItem>)
 
 data class ShoppingItem (
     val name: String,
@@ -62,3 +81,10 @@ data class ShoppingItem (
     val price : Double,
     val category: Category?,
     val image : Int)
+
+data class FeaturedItem (
+    val name: String,
+    val slogan: String,
+    val backgroundImage: Int,
+    val price: Double
+        )
