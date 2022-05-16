@@ -10,12 +10,12 @@
     app:cardCornerRadius="5dp"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_margin="4dp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
+
         <ImageView
-            app:cardCornerRadius="10dp"
             android:id="@+id/item_image"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -23,9 +23,9 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/bread"
+            app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toTopOf="@+id/item_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,11 +37,24 @@
             android:layout_marginTop="2dp"
             android:text="Name"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/item_weight"
+            app:layout_constraintBottom_toTopOf="@+id/shop_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_image" />
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="2dp"
+            android:textSize="8sp"
+            android:text="Shop name ff"
+            app:layout_constraintBottom_toTopOf="@+id/item_weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
         <TextView
             android:id="@+id/item_weight"
@@ -55,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_name" />
+            app:layout_constraintTop_toBottomOf="@+id/shop_name" />
         <TextView
             android:id="@+id/item_price"
             android:layout_width="wrap_content"
