@@ -49,7 +49,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
             android:textSize="8sp"
-            android:text="Shop name ff"
+            android:text="Shop name"
             app:layout_constraintBottom_toTopOf="@+id/item_weight"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

@@ -2,6 +2,10 @@ package com.example.shoppr.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -30,4 +34,5 @@ class HomeActivity : AppCompatActivity() {
 
 
     }
+
 }
