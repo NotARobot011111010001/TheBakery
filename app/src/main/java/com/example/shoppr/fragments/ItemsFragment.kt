@@ -39,12 +39,12 @@ class ItemsFragment : Fragment() {
         val searchView : androidx.appcompat.widget.SearchView = view.findViewById(R.id.items_search)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
+            override fun onQueryTextSubmit(query: String): Boolean {
                 return true
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                gridAdapter?.filter?.filter(newText)
+            override fun onQueryTextChange(newText: String): Boolean {
+                gridAdapter.filter.filter(newText)
                 return true
             }
 
@@ -53,10 +53,7 @@ class ItemsFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        //shoppingItemsList.clear()
-    }
+
 
 
 
