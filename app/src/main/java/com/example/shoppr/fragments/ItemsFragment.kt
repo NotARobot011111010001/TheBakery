@@ -9,7 +9,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.example.shoppr.R
 import com.example.shoppr.activities.HomeActivity
-import com.example.shoppr.adapters.GridAdapter
+import com.example.shoppr.adapters.ItemsGridAdapter
 import com.example.shoppr.logic.Category
 import com.example.shoppr.logic.ShopManager
 
@@ -18,7 +18,7 @@ class ItemsFragment : Fragment() {
 
 
     private lateinit var gridView : GridView
-    private lateinit var gridAdapter: GridAdapter
+    private lateinit var gridAdapter: ItemsGridAdapter
     private lateinit var shopManager : ShopManager
     private lateinit var listButton : List<Pair<CheckBox,Category>>
 
@@ -32,7 +32,7 @@ class ItemsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         shopManager = (activity as HomeActivity).shopManager
         gridView = view.findViewById(R.id.items_grid)
-        gridAdapter = GridAdapter(context,shopManager.getItemsAndShop())
+        gridAdapter = ItemsGridAdapter(context,shopManager.getItemsAndShop())
         gridView.adapter = gridAdapter
 
         val searchView : androidx.appcompat.widget.SearchView = view.findViewById(R.id.items_search)

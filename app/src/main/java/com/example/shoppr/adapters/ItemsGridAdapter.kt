@@ -11,7 +11,7 @@ import com.example.shoppr.logic.Category
 import com.example.shoppr.logic.ShoppingItem
 import java.util.ArrayList
 
-class GridAdapter(private val context: Context?, private val gridItems: MutableList<Pair<String, ShoppingItem>>) : BaseAdapter(),
+class ItemsGridAdapter(private val context: Context?, private val gridItems: MutableList<Pair<String, ShoppingItem>>) : BaseAdapter(),
     Filterable {
 
     private var filteredGridItems = gridItems

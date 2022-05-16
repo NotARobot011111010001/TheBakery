@@ -4,11 +4,9 @@ import android.location.Location
 import com.example.shoppr.R
 
 
-private val shops: MutableList<Shop> = mutableListOf()
-
 class ShopManager {
 
-
+    val shops: MutableList<Shop> = mutableListOf()
 
     init{
 
@@ -30,6 +28,7 @@ class ShopManager {
         shops.add(Shop("FreshProduce", "Your local market for fresh product", Location("blank"), R.drawable.fresh_produce, shoppingItemsList))
 
     }
+
 
     fun getItemsAndShop(): MutableList<Pair<String, ShoppingItem>> {
         var listAll: MutableList<Pair<String, ShoppingItem>> = mutableListOf()
