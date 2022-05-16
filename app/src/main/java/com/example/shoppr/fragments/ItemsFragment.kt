@@ -20,6 +20,7 @@ class ItemsFragment : Fragment() {
     private lateinit var gridView : GridView
     private lateinit var gridAdapter: GridAdapter
     private lateinit var shopManager : ShopManager
+    private lateinit var listButton : List<Pair<CheckBox,Category>>
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -49,15 +50,19 @@ class ItemsFragment : Fragment() {
 
         })
 
-        val listButton = listOf<Pair<CheckBox,Category>>(
+        listButton = listOf<Pair<CheckBox,Category>>(
             Pair(view.findViewById(R.id.category_button_1), Category.VEGETABLE),
             Pair(view.findViewById(R.id.category_button_2),Category.DAIRY),
             Pair(view.findViewById(R.id.category_button_3),Category.MEAT),
             Pair(view.findViewById(R.id.category_button_4),Category.DRINK),
             Pair(view.findViewById(R.id.category_button_5),Category.SNACK)
         )
+
+
+
         for(button in listButton){
             if(button.first is CheckBox){
+                button.first.isChecked = false
                 button.first.setOnClickListener{
                     for (x in listButton) {
                         if (x != button)
@@ -81,6 +86,7 @@ class ItemsFragment : Fragment() {
 
 
     }
+
 
 
 
