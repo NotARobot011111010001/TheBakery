@@ -12,6 +12,7 @@ import com.example.shoppr.activities.HomeActivity
 import com.example.shoppr.adapters.ItemsGridAdapter
 import com.example.shoppr.logic.Category
 import com.example.shoppr.logic.ShopManager
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ItemsFragment : Fragment() {
@@ -34,6 +35,9 @@ class ItemsFragment : Fragment() {
         gridView = view.findViewById(R.id.items_grid)
         gridAdapter = ItemsGridAdapter(context,shopManager.getItemsAndShop())
         gridView.adapter = gridAdapter
+
+        val welcomeMsg : TextView = view.findViewById(R.id.items_username)
+        welcomeMsg.text = "Welcome, ${FirebaseAuth.getInstance().currentUser?.displayName}"
 
         val searchView : androidx.appcompat.widget.SearchView = view.findViewById(R.id.items_search)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
