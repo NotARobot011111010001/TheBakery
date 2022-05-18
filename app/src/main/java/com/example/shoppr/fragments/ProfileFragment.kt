@@ -24,9 +24,18 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button : AppCompatButton = view.findViewById(R.id.log_out)
-        button.setOnClickListener{
+
+        //Logs user out
+        val logout: AppCompatButton = view.findViewById(R.id.log_out)
+        logout.setOnClickListener{
             AuthUI.getInstance().signOut(requireContext())
+        }
+
+
+        //Deletes users account
+        val deleteAccount: AppCompatButton = view.findViewById(R.id.delete_account)
+        deleteAccount.setOnClickListener{
+            AuthUI.getInstance().delete(requireContext());
         }
 
     }

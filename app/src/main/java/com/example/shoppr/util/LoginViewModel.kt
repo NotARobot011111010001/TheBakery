@@ -1,15 +1,18 @@
 package com.example.shoppr.util
 
-import android.content.Context
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import androidx.preference.PreferenceManager
-import kotlin.random.Random
+
+/**
+ * Code used from:
+ * https://developer.android.com/codelabs/advanced-android-kotlin-training-login#0
+ **/
 
 class LoginViewModel : ViewModel() {
 
     enum class AuthenticationState {
-        AUTHENTICATED, UNAUTHENTICATED, INVALID_AUTHENTICATION
+        AUTHENTICATED, UNAUTHENTICATED
     }
 
     val authenticationState = FirebaseUserData().map { user ->

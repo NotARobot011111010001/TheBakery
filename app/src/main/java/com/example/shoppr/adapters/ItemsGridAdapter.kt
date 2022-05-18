@@ -44,7 +44,7 @@ class ItemsGridAdapter(private val context: Context?, private val gridItems: Mut
         shopName.text = filteredGridItems[position].first
 
         convertView.setOnClickListener{
-            (context as HomeActivity).openItem(filteredGridItems[position].second)
+            (context as HomeActivity).openItem(filteredGridItems[position].first, filteredGridItems[position].second)
         }
 
         return convertView
@@ -52,7 +52,7 @@ class ItemsGridAdapter(private val context: Context?, private val gridItems: Mut
 
     override fun getFilter(): Filter {
         return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults? {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val searchText = constraint.toString().lowercase()
                 val filterResults = FilterResults()
                 if(searchText.isEmpty()){

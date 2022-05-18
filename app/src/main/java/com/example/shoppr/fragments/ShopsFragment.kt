@@ -1,7 +1,6 @@
 package com.example.shoppr.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.shoppr.R
 import com.example.shoppr.activities.HomeActivity
-import com.example.shoppr.adapters.ItemsGridAdapter
 import com.example.shoppr.adapters.ShopsListAdapter
 import com.example.shoppr.logic.FeaturedItem
 import com.example.shoppr.logic.ShopManager
@@ -31,18 +29,19 @@ class ShopsFragment : Fragment() {
         shopManager = (activity as HomeActivity).shopManager
         listView = view.findViewById(R.id.shop_list)
         shopsAdapter = ShopsListAdapter(context, shopManager.shops)
-        Log.d("test", context.toString())
         listView.adapter = shopsAdapter
 
+        //Gets a random featured item from any shop and updates the advert with its data
         val featuredItem : FeaturedItem = shopManager.getRandomFeatured()
         val featuredImage : ImageView =  view.findViewById(R.id.advert_image)
         val featuredName : TextView =  view.findViewById(R.id.advert_name)
         val featuredSlogan : TextView =  view.findViewById(R.id.advert_slogan)
-
         featuredImage.setImageResource(featuredItem.backgroundImage)
         featuredName.text = featuredItem.name
         featuredSlogan.text = featuredItem.slogan
 
+
+        //Personalised user message
         val welcomeMsg : TextView = view.findViewById(R.id.shops_username)
         welcomeMsg.text = "Welcome, ${FirebaseAuth.getInstance().currentUser?.displayName}"
 
@@ -52,11 +51,8 @@ class ShopsFragment : Fragment() {
             override fun onQueryTextSubmit(query: String): Boolean {
                 return true
             }
-
             override fun onQueryTextChange(newText: String): Boolean {
-
                 shopsAdapter.filter.filter(newText)
-
                 return true
             }
 

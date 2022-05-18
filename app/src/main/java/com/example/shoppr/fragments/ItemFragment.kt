@@ -8,25 +8,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.shoppr.R
-import com.example.shoppr.logic.Shop
-import com.example.shoppr.logic.ShopManager
 import com.example.shoppr.logic.ShoppingItem
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 
 class ItemFragment : Fragment() {
 
     lateinit var item: ShoppingItem
-
+    lateinit var shopName : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Gets the arguments passed
         val bundle = arguments
         if (bundle != null) {
             val args = ItemFragmentArgs.fromBundle(bundle)
             item = args.item
+            shopName = args.shopName
         }
     }
 
@@ -40,14 +38,22 @@ class ItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //Updates the fragment with data from passed arguments
+        val itemImage : ImageView =  view.findViewById(R.id.item_image)
+        val itemName : TextView =  view.findViewById(R.id.item_name)
+        val itemPrice : TextView =  view.findViewById(R.id.item_price)
+        val itemCategory : TextView =  view.findViewById(R.id.item_category)
+        val shopAvailability: TextView = view.findViewById(R.id.item_available)
 
-        val featuredImage : ImageView =  view.findViewById(R.id.item_name)
-        val featuredName : TextView =  view.findViewById(R.id.advert_name)
-        val featuredSlogan : TextView =  view.findViewById(R.id.advert_slogan)
+        itemImage.setImageResource(item.image)
+        itemName.text = item.name
+        itemPrice.text = "£" + item.price.toString()
 
-        //featuredImage.setImageResource(shop.backgroundImage)
-        //featuredName.text = shop.name
-        //featuredSlogan.text = shop.slogan
+        if(item.category != null){
+            itemCategory.text = item.category.toString().lowercase().capitalize()
+        }
+        shopAvailability.text = shopName
+
     }
 
 

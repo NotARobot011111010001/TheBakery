@@ -50,5 +50,8 @@
         <argument
             android:name="item"
             app:argType="com.example.shoppr.logic.ShoppingItem" />
+        <argument
+            android:name="shopName"
+            app:argType="string" />
     </fragment>
 </navigation>

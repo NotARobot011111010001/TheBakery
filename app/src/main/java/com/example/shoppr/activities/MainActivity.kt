@@ -7,13 +7,11 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.Observer
 import com.example.shoppr.R
 import com.example.shoppr.util.LoginViewModel
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,12 +35,13 @@ class MainActivity : AppCompatActivity() {
             isAppearanceLightStatusBars = true
         }
 
+        //If the user is already logged in direct to home activity
         viewModel.authenticationState.observe(this) { authenticationState ->
             when (authenticationState) {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> launchHomeActivity()
-                else -> Log.e(
+                else -> Log.d(
                     tag,
-                    "Authentication state that doesn't require any UI change $authenticationState"
+                    "User not logged in"
                 )
             }
         }
@@ -55,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Launch sign in activity from firebase UI, contains email and google login options
     fun launchSignIn(view: View){
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         signInLauncher.launch(signInIntent)
     }
 
+    //Starts the home activity
     private fun launchHomeActivity(){
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)

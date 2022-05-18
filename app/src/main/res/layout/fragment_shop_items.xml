@@ -12,20 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/items_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Welcome, John Doe"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/items_search"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/items_search"
@@ -41,7 +28,7 @@
             app:layout_constraintBottom_toTopOf="@+id/featured_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/items_username"
+            app:layout_constraintTop_toTopOf="parent"
             app:queryHint="Search product" />
 
         <include
@@ -225,7 +212,7 @@
             android:layout_gravity=""
             android:layout_marginStart="16dp"
             android:layout_marginTop="64dp"
-            android:text="Items in shops near you"
+            android:text="Items in the shop"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/items_grid"

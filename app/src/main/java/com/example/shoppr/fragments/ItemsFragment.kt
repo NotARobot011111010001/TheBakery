@@ -31,14 +31,19 @@ class ItemsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         shopManager = (activity as HomeActivity).shopManager
         gridView = view.findViewById(R.id.items_grid)
         gridAdapter = ItemsGridAdapter(context,shopManager.getItemsAndShop())
         gridView.adapter = gridAdapter
 
+
+        //Personalised message for user
         val welcomeMsg : TextView = view.findViewById(R.id.items_username)
         welcomeMsg.text = "Welcome, ${FirebaseAuth.getInstance().currentUser?.displayName}"
 
+        //Update filter text when search query changes
         val searchView : androidx.appcompat.widget.SearchView = view.findViewById(R.id.items_search)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
@@ -48,12 +53,12 @@ class ItemsFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 gridAdapter.filter.filter(newText)
-
                 return true
             }
 
         })
 
+        //Check boxes for each category
         listButton = listOf<Pair<CheckBox,Category>>(
             Pair(view.findViewById(R.id.category_button_1), Category.VEGETABLE),
             Pair(view.findViewById(R.id.category_button_2),Category.DAIRY),
@@ -62,10 +67,9 @@ class ItemsFragment : Fragment() {
             Pair(view.findViewById(R.id.category_button_5),Category.SNACK)
         )
 
-
-
+        //Adds a listener which unchecks all other boxes other than the one clicked which is swaps state.
+        //Also updates filter
         for(button in listButton){
-            if(button.first is CheckBox){
                 button.first.isChecked = false
                 button.first.setOnClickListener{
                     for (x in listButton) {
@@ -80,9 +84,6 @@ class ItemsFragment : Fragment() {
                     gridAdapter.filter.filter(searchView.query)
 
                 }
-
-            }
-
         }
 
 
