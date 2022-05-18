@@ -14,7 +14,11 @@
         android:id="@+id/itemsFragment"
         android:name="com.example.shoppr.fragments.ItemsFragment"
         android:label="Items"
-        tools:layout="@layout/fragment_items" />
+        tools:layout="@layout/fragment_items" >
+        <action
+            android:id="@+id/action_itemsFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shopsFragment"
         android:name="com.example.shoppr.fragments.ShopsFragment"
@@ -37,5 +41,14 @@
         <argument
             android:name="shop"
             app:argType="com.example.shoppr.logic.Shop" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="com.example.shoppr.fragments.ItemFragment"
+        android:label="fragment_item"
+        tools:layout="@layout/fragment_item" >
+        <argument
+            android:name="item"
+            app:argType="com.example.shoppr.logic.ShoppingItem" />
     </fragment>
 </navigation>

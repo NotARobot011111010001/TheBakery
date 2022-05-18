@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.shoppr.R
+import com.example.shoppr.activities.HomeActivity
 import com.example.shoppr.logic.Category
 import com.example.shoppr.logic.ShoppingItem
 import java.util.ArrayList
@@ -41,6 +42,10 @@ class ItemsGridAdapter(private val context: Context?, private val gridItems: Mut
         price.text = "£" + filteredGridItems[position].second.price.toString()
         weight.text = filteredGridItems[position].second.weight
         shopName.text = filteredGridItems[position].first
+
+        convertView.setOnClickListener{
+            (context as HomeActivity).openItem(filteredGridItems[position].second)
+        }
 
         return convertView
     }

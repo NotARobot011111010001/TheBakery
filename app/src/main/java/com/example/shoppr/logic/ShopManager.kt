@@ -15,29 +15,28 @@ class ShopManager {
 
         //Super Supermarket filled with dummy data
         //This data would be filled from external SQL database in production
-        var images: IntArray = intArrayOf(R.drawable.bread, R.drawable.carrots, R.drawable.sandwich, R.drawable.wine)
-        var names = arrayOf("Bread", "Carrots", "Sandwich", "Wine")
-        var weights = arrayOf("500g", "500g", "120g", "750ml")
-        var prices = arrayOf(4.99, 2.45, 4.25, 10.99)
-        var categories = arrayOf(null, Category.VEGETABLE, Category.SNACK, Category.DRINK)
-        var shoppingItemsList : MutableList<ShoppingItem> = mutableListOf()
-        for (index in names.indices) {
-            val item = ShoppingItem(names[index], weights[index], prices[index], categories[index], images[index])
-            shoppingItemsList.add(item)
-        }
+
+        var superMarketItemsList = mutableListOf<ShoppingItem>(
+            ShoppingItem("Bread", "500g",4.99,null, R.drawable.bread),
+            ShoppingItem("Carrots", "500g",4.99,Category.VEGETABLE, R.drawable.carrots),
+            ShoppingItem("Sandwich", "120g", 4.25, Category.SNACK, R.drawable.sandwich),
+            ShoppingItem("Wine", "750ml", 10.99, Category.DRINK, R.drawable.wine)
+        )
+
+
 
         var featuredCoke = FeaturedItem("Coca Cola","Only 99p per can", R.drawable.feautedcoke,0.99)
         var featuredBread = FeaturedItem("Wholegrain bread","Now only £4.99", R.drawable.featuredbread,4.99)
         shops.add(Shop("Super SuperMarket", "The country's best supermarket",
-            Location("blank"), R.drawable.super_supermarket, shoppingItemsList,
+            Location("blank"), R.drawable.super_supermarket, superMarketItemsList ,
             mutableListOf(featuredCoke)))
 
         shops.add(Shop("The Bakery", "Get a taste of the finest bread",
-            Location("blank"), R.drawable.the_bakery, shoppingItemsList,
+            Location("blank"), R.drawable.the_bakery, superMarketItemsList ,
             mutableListOf(featuredBread)))
 
         shops.add(Shop("FreshProduce", "Your local market for fresh product",
-            Location("blank"), R.drawable.fresh_produce, shoppingItemsList,
+            Location("blank"), R.drawable.fresh_produce, superMarketItemsList ,
             mutableListOf()))
 
     }

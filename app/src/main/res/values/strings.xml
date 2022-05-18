@@ -10,6 +10,21 @@
         "interdum at. Mauris condimentum tellus sed libero imperdiet, et tincidunt."
 
     </string>
+    <string name="desc_text">
+
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas odio non"
+        "elit luctus, vel tincidunt risus lacinia. Sed finibus ligula vitae leo mollis molestie"
+        "vitae ut orci. Maecenas et blandit libero. Nam congue venenatis lobortis."
+
+    </string>
+
+    <string name="nutrional_text">
+
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas odio non"
+        "elit luctus, vel tincidunt risus lacinia. Sed finibus ligula vitae leo mollis molestie"
+        "vitae ut orci. Maecenas et blandit libero. Nam congue venenatis lobortis."
+
+    </string>
     <string name="login_unsuccessful_msg">Login unsuccessful</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
