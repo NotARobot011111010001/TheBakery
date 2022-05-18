@@ -41,6 +41,9 @@
         <argument
             android:name="shop"
             app:argType="com.example.shoppr.logic.Shop" />
+        <action
+            android:id="@+id/action_shopItemsFragment_to_itemFragment"
+            app:destination="@id/itemFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemFragment"

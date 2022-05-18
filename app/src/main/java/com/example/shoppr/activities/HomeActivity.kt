@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.shoppr.R
 import com.example.shoppr.fragments.ItemsFragmentDirections
+import com.example.shoppr.fragments.ShopItemsFragmentDirections
 import com.example.shoppr.fragments.ShopsFragmentDirections
 import com.example.shoppr.logic.Shop
 import com.example.shoppr.logic.ShopManager
@@ -65,7 +66,16 @@ class HomeActivity : AppCompatActivity() {
 
     //Navigates the navfragment to the item passed as argument
     fun openItem(shopName: String, item: ShoppingItem){
-        val action = ItemsFragmentDirections.actionItemsFragmentToItemFragment(item,shopName)
-        navController.navigate(action)
+
+        if(navController.currentDestination?.id ==  R.id.shopItemsFragment){
+            val action = ShopItemsFragmentDirections.actionShopItemsFragmentToItemFragment(item,shopName)
+            navController.navigate(action)
+        }else{
+            val action = ItemsFragmentDirections.actionItemsFragmentToItemFragment(item,shopName)
+            navController.navigate(action)
+        }
+
     }
+
+
 }

@@ -46,7 +46,7 @@ class ShopItemsFragment : Fragment() {
 
 
         shopManager = (activity as HomeActivity).shopManager
-        gridView = view.findViewById(R.id.items_grid)
+        gridView = view.findViewById(R.id.shop_items_grid)
         gridAdapter = ItemsGridAdapter(context,shopManager.getItemsInShop(shop))
         gridView.adapter = gridAdapter
 

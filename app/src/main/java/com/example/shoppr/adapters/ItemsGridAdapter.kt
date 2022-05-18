@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.shoppr.R
 import com.example.shoppr.activities.HomeActivity
 import com.example.shoppr.logic.Category
@@ -43,7 +44,9 @@ class ItemsGridAdapter(private val context: Context?, private val gridItems: Mut
         weight.text = filteredGridItems[position].second.weight
         shopName.text = filteredGridItems[position].first
 
+
         convertView.setOnClickListener{
+
             (context as HomeActivity).openItem(filteredGridItems[position].first, filteredGridItems[position].second)
         }
 

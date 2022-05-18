@@ -50,7 +50,7 @@
             android:text="Categories"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/items_grid"
+            app:layout_constraintBottom_toTopOf="@id/shop_items_grid"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -215,14 +215,14 @@
             android:text="Items in the shop"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/items_grid"
+            app:layout_constraintBottom_toTopOf="@id/shop_items_grid"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/items_categories" />
 
         <GridView
-            android:id="@+id/items_grid"
+            android:id="@+id/shop_items_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
