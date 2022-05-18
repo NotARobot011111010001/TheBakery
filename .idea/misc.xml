@@ -23,9 +23,11 @@
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/activity_main.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/advert_item.xml" value="0.1" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_home.xml" value="0.5" />
+        <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_item.xml" value="0.35185185185185186" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_items.xml" value="0.33" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_profile.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_scrolling.xml" value="0.33" />
+        <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_shop_items.xml" value="0.35185185185185186" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_shops.xml" value="0.33" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/fragment_welcome.xml" value="0.33" />
         <entry key="..\:/Users/Jack/AndroidStudioProjects/Shoppr/app/src/main/res/layout/grid_item.xml" value="0.5" />
@@ -39,5 +41,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.35185185185185186" />
+      </ProjectState>
+    </option>
   </component>
 </project>

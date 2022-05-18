@@ -1,7 +1,9 @@
 package com.example.shoppr.logic
 
 import android.location.Location
+import android.os.Parcelable
 import com.example.shoppr.R
+import kotlinx.parcelize.Parcelize
 
 
 class ShopManager {
@@ -48,6 +50,14 @@ class ShopManager {
         return featuredItems.random()
     }
 
+    fun getItemsInShop(shop: Shop): MutableList<Pair<String, ShoppingItem>>{
+        var listAll: MutableList<Pair<String, ShoppingItem>> = mutableListOf()
+        for(item in shop.items){
+            listAll.add(Pair(shop.name,item))
+        }
+        return listAll
+    }
+
     fun getItemsAndShop(): MutableList<Pair<String, ShoppingItem>> {
         var listAll: MutableList<Pair<String, ShoppingItem>> = mutableListOf()
         for (shop in shops){
@@ -67,24 +77,27 @@ enum class Category{
     VEGETABLE, DAIRY, MEAT, DRINK, SNACK
 }
 
+@Parcelize
 data class Shop (
     val name: String,
     val slogan : String,
     val storeLocation: Location,
     val backgroundImage : Int,
     val items: List<ShoppingItem>,
-    val featuredItems: List<FeaturedItem>)
+    val featuredItems: List<FeaturedItem>) : Parcelable
 
+@Parcelize
 data class ShoppingItem (
     val name: String,
     val weight: String,
     val price : Double,
     val category: Category?,
-    val image : Int)
+    val image : Int): Parcelable
 
+@Parcelize
 data class FeaturedItem (
     val name: String,
     val slogan: String,
     val backgroundImage: Int,
     val price: Double
-        )
+        ) : Parcelable

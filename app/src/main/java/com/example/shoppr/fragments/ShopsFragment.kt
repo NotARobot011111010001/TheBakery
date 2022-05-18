@@ -1,6 +1,7 @@
 package com.example.shoppr.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,7 @@ class ShopsFragment : Fragment() {
         shopManager = (activity as HomeActivity).shopManager
         listView = view.findViewById(R.id.shop_list)
         shopsAdapter = ShopsListAdapter(context, shopManager.shops)
+        Log.d("test", context.toString())
         listView.adapter = shopsAdapter
 
         val featuredItem : FeaturedItem = shopManager.getRandomFeatured()

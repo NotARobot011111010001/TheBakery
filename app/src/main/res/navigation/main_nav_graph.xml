@@ -19,10 +19,23 @@
         android:id="@+id/shopsFragment"
         android:name="com.example.shoppr.fragments.ShopsFragment"
         android:label="Shops"
-        tools:layout="@layout/fragment_shops" />
+        tools:layout="@layout/fragment_shops" >
+        <action
+            android:id="@+id/action_shopsFragment_to_shopItemsFragment"
+            app:destination="@id/shopItemsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.shoppr.fragments.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/shopItemsFragment"
+        android:name="com.example.shoppr.fragments.ShopItemsFragment"
+        android:label="fragment_shop_items"
+        tools:layout="@layout/fragment_shop_items" >
+        <argument
+            android:name="shop"
+            app:argType="com.example.shoppr.logic.Shop" />
+    </fragment>
 </navigation>

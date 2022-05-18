@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.shoppr.R
+import com.example.shoppr.activities.HomeActivity
 import com.example.shoppr.logic.Category
 import com.example.shoppr.logic.Shop
 import com.example.shoppr.logic.ShoppingItem
@@ -39,6 +40,9 @@ class ShopsListAdapter(private val context: Context?, private val shopsList: Mut
         name.text = filteredGridItems[position].name
         slogan.text =  filteredGridItems[position].slogan
 
+        convertView.setOnClickListener{
+            (context as HomeActivity).openShop(filteredGridItems[position])
+        }
 
         return convertView
     }
